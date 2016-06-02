@@ -8,6 +8,7 @@
   "dependencies": {
     "react": "^15.0.2",
     "react-native": "^0.26.2",
+    "react-native-drawer": "^2.2.3",
     "react-native-router-flux": "^3.26.15",
     "tcomb-form-native": "^0.5.1"
   }
