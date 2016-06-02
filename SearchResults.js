@@ -9,8 +9,7 @@ import {
   ListView,
   Text
 } from 'react-native';
-
-var PropertyView = require('./PropertyView');
+import { Actions } from 'react-native-router-flux';
 
 class SearchResults extends Component {
 
@@ -25,12 +24,7 @@ class SearchResults extends Component {
 
   rowPressed(propertyGuid) {
     var property = this.props.listings.filter(prop => prop.guid === propertyGuid)[0];
-
-    this.props.navigator.push({
-      title: "Property",
-      component: PropertyView,
-      passProps: {property: property}
-    });
+    Actions.propertyView({property: property})
   }
 
   renderRow(rowData, sectionID, rowID) {

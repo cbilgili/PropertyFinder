@@ -10,8 +10,7 @@ import {
     ActivityIndicatorIOS,
     Image
 } from 'react-native';
-
-var SearchResults = require('./SearchResults');
+import { Actions } from 'react-native-router-flux';
 
 
 var styles = StyleSheet.create({
@@ -120,11 +119,12 @@ class SearchPage extends Component {
   _handleResponse(response) {
     this.setState({ isLoading: false , message: '' });
     if (response.application_response_code.substr(0, 1) === '1') {
-      this.props.navigator.push({
-        title: 'Results',
-        component: SearchResults,
-        passProps: {listings: response.listings}
-      });
+      // this.props.navigator.push({
+      //   title: 'Results',
+      //   component: SearchResults,
+      //   passProps: {listings: response.listings}
+      // });
+      Actions.searchResults({listings: response.listings});
     } else {
       this.setState({ message: 'Location not recognized; please try again.'});
     }
