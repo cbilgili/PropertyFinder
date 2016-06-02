@@ -5,10 +5,16 @@ import {
   StyleSheet,
   Image,
   View,
+  TouchableHighlight,
   Text
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 class PropertyView extends Component {
+
+  onSendInquiryPressed() {
+    Actions.inquiryPage({property: this.props.property})
+  }
 
   render() {
     var property = this.props.property;
@@ -31,6 +37,11 @@ class PropertyView extends Component {
         </View>
         <Text style={styles.description}>{stats}</Text>
         <Text style={styles.description}>{property.summary}</Text>
+        <TouchableHighlight style={styles.button}
+            onPress={this.onSendInquiryPressed.bind(this)}
+            underlayColor='#99d9f4'>
+          <Text style={styles.buttonText}>Send Inquiry</Text>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -66,6 +77,23 @@ var styles = StyleSheet.create({
     fontSize: 18,
     margin: 5,
     color: '#656565'
+  },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  },
+  button: {
+    height: 36,
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
   }
 });
 
